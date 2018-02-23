@@ -1,6 +1,6 @@
-# Insight UI
+# Zclassic Insight UI
 
-A Bitcoin blockchain explorer web application service for [Bitcore Node](https://github.com/bitpay/bitcore-node) using the [Insight API](https://github.com/bitpay/insight-api).
+A Zclassic blockchain explorer web application service for [Bitcore Node](https://github.com/bitpay/bitcore-node) using the [Insight API](https://github.com/bitpay/insight-api).
 
 ## Quick Start
 
@@ -14,8 +14,8 @@ To manually install all of the necessary components, you can run these commands:
 npm install -g bitcore-node
 bitcore-node create mynode
 cd mynode
-bitcore-node install insight-api
-bitcore-node install insight-ui
+bitcore-node install insight-api-zclassic
+bitcore-node install insight-ui-zclassic
 bitcore-node start
 ```
 
@@ -55,7 +55,7 @@ To change these routes, first make your changes to `package.json`, for example:
   }
 ```
 
-Then rebuild the `insight-ui` service:
+Then rebuild the `insight-ui-zclassic` service:
 
 ```
 $ npm run build

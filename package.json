@@ -1,17 +1,18 @@
 {
-  "name": "insight-ui",
-  "description": "An open-source frontend for the Insight API. The Insight API provides you with a convenient, powerful and simple way to query and broadcast data on the bitcoin network and build your own services with it.",
-  "version": "5.0.0-beta.44",
-  "repository": "git://github.com/bitpay/insight-ui.git",
+  "name": "insight-ui-zclassic",
+  "description": "An open-source frontend for the Zclassic Insight API. The Insight API provides you with a convenient, powerful and simple way to query and broadcast data on the bitcoin network and build your own services with it.",
+  "version": "5.0.0-beta.44-zclassic",
+  "repository": "git://github.com/z-classic/insight-ui-zclassic.git",
   "bugs": {
-    "url": "https://github.com/bitpay/insight-ui/issues"
+    "url": "https://github.com/z-classic/insight-ui-zclassic/issues"
   },
-  "homepage": "https://github.com/bitpay/insight-ui",
+  "homepage": "https://github.com/z-classic/insight-ui-zclassic",
   "license": "MIT",
   "keywords": [
     "insight",
     "blockchain",
     "blockexplorer",
+    "zclassic",
     "bitcoin",
     "bitcore",
     "front-end"
