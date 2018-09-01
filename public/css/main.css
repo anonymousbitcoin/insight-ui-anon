@@ -199,7 +199,7 @@ navbar-default .navbar-toggle .icon-bar { background-color: #fff; }
 .navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {background-color: #373D42;}
 
 .navbar-default {
-  background-color: #272D63 !important;
+  background-color: #999 !important;
   margin: 0;
   border: 0;
 }
@@ -242,7 +242,7 @@ navbar-default .navbar-toggle .icon-bar { background-color: #fff; }
 }
 
 .insight {
-  background-image: url('../img/btcpLogoWhite.png');
+  background-image: url('../img/anonLogoWhite.png');
   background-size: 150px;
   background-position-x: 20px;
   background-repeat: no-repeat;
@@ -523,7 +523,7 @@ navbar-default .navbar-toggle .icon-bar { background-color: #fff; }
 
 /* Set the fixed height of the footer here */
 #footer {
-  background-color: #666666;
+  background-color: #BF2229;
   color: #fff;
   height: 51px;
   overflow: hidden;

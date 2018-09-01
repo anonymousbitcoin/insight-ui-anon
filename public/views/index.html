@@ -1,10 +1,10 @@
 
-<div class="jumbotron" style="background-image:url('./img/btcp_header.jpg');">
+<div class="jumbotron" style="background-image:url('./img/bcp_header.jpg');">
   <div class="container inner-margin-top">
     <div class="row">
       <div class="col-md-12 col-sm-12" style="text-align:center">
         
-        <h2 class="inner-header">Bitcoin Private Explorer</h2>
+        <h2 class="inner-header">ANON Block Explorer</h2>
           
         <p class="inner-header">Search for Block, Transaction or address</p>
         <div class="col-md-10 col-sm-12 col-xs-12 col-md-offset-1 search-margin-top">
@@ -82,7 +82,7 @@
                 <td>
                   <a class="ellipsis" href="tx/{{tx.txid}}">{{tx.txid}}</a>
                 </td>
-                <td class="text-right"><span class="ellipsis">{{$root.currency.getConvertion(tx.valueOut) || tx.valueOut + ' BTCP'}}</span></td>
+                <td class="text-right"><span class="ellipsis">{{$root.currency.getConvertion(tx.valueOut) || tx.valueOut + ' ANON'}}</span></td>
               </tr>
                   <br/>
               </tbody>

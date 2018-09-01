@@ -1,6 +1,6 @@
 // Source: public/src/js/app.js
 var defaultLanguage = localStorage.getItem('insight-language') || 'en';
-var defaultCurrency = localStorage.getItem('insight-currency') || 'BTCP';
+var defaultCurrency = localStorage.getItem('insight-currency') || 'ANON';
 
 angular.module('insight',[
   'ngAnimate',
@@ -269,7 +269,7 @@ angular.module('insight.currency').controller('CurrencyController',
 
         if (this.symbol === 'USD') {
           response = _roundFloat((value * this.factor), 2);
-        } else if (this.symbol === 'mBTCP') {
+        } else if (this.symbol === 'mANON') {
           this.factor = 1000;
           response = _roundFloat((value * this.factor), 5);
         } else if (this.symbol === 'bits') {
@@ -296,7 +296,7 @@ angular.module('insight.currency').controller('CurrencyController',
         Currency.get({}, function(res) {
           $rootScope.currency.factor = $rootScope.currency.bitstamp = res.data.bitstamp;
         });
-      } else if (currency === 'mBTCP') {
+      } else if (currency === 'mANON') {
         $rootScope.currency.factor = 1000;
       } else if (currency === 'bits') {
         $rootScope.currency.factor = 1000000;
@@ -360,7 +360,7 @@ angular.module('insight.system').controller('HeaderController',
     $rootScope.currency = {
       factor: 1,
       bitstamp: 0,
-      symbol: 'BTCP'
+      symbol: 'ANON'
     };
 
     $scope.menu = [{
@@ -1297,7 +1297,7 @@ angular.module('insight').config(function($routeProvider) {
   $routeProvider.
     when('/block/:blockHash', {
       templateUrl: 'views/block.html',
-      title: 'Bitcoin Private Block '
+      title: 'ANON Block '
     }).
     when('/block-index/:blockHeight', {
       controller: 'BlocksController',
@@ -1309,7 +1309,7 @@ angular.module('insight').config(function($routeProvider) {
     }).
     when('/tx/:txId/:v_type?/:v_index?', {
       templateUrl: 'views/transaction.html',
-      title: 'Bitcoin Private Transaction '
+      title: 'ANON Transaction '
     }).
     when('/', {
       templateUrl: 'views/index.html',
@@ -1317,15 +1317,15 @@ angular.module('insight').config(function($routeProvider) {
     }).
     when('/blocks', {
       templateUrl: 'views/block_list.html',
-      title: 'Bitcoin Private Blocks solved Today'
+      title: 'ANON Blocks solved Today'
     }).
     when('/blocks-date/:blockDate/:startTimestamp?', {
       templateUrl: 'views/block_list.html',
-      title: 'Bitcoin Private Blocks solved '
+      title: 'ANON Blocks solved '
     }).
     when('/address/:addrStr', {
       templateUrl: 'views/address.html',
-      title: 'Bitcoin Private Address '
+      title: 'ANON Address '
     }).
     when('/status', {
       templateUrl: 'views/status.html',
