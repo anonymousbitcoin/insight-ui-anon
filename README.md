@@ -1,6 +1,6 @@
 # Insight UI
 
-A Bitcoin blockchain explorer web application service for [Bitcore Node](https://github.com/bitpay/bitcore-node) using the [Insight API](https://github.com/interbiznw-btcpcontrib/insight-api-btcp).
+A Bitcoin blockchain explorer web application service for [Bitcore Node](https://github.com/bitpay/bitcore-node) using the [Insight API](https://github.com/anonymousbitcoin/insight-ui-anon).
 
 ## Quick Start
 
@@ -11,11 +11,11 @@ Please see the guide at [https://bitcore.io/guides/full-node](https://bitcore.io
 To manually install all of the necessary components, you can run these commands:
 
 ```bash
-npm install interbiznw-btcpcontrib/bitcore-node-btcp
-./node_modules/bitcore-node-btcp/bin/bitcore-node create btcp-explorer
-cd btcp-explorer
-../node_modules/bitcore-node-btcp/bin/bitcore-node install interbiznw-btcpcontrib/insight-api-btcp interbiznw-btcpcontrib/insight-ui-btcp
-nvm use v4; ./node_modules/bitcore-node-interbiznw-btcpcontrib/bin/bitcore-node start
+npm install anonymousbitcoin/bitcore-node-anon
+./node_modules/bitcore-node-anon/bin/bitcore-node create anon-explorer
+cd anon-explorer
+../node_modules/bitcore-node-anon/bin/bitcore-node install anonymousbitcoin/insight-api-anon anonymousbitcoin/insight-ui-anon
+nvm use v4; ./node_modules/bitcore-node-anonymousbitcoin/bin/bitcore-node start
 ```
 Get the memo script from https://gist.github.com/aayanl/e2a757eaa9866e83c454d115cc214a89 and have it save the memos to public/js/memos.txt
 
@@ -70,11 +70,11 @@ compile***.
 
 ## Note
 
-For more details about the [Insight API](https://github.com/interbiznw-btcpcontrib/insight-api-btcp) configuration and end-points, go to [Insight API GitHub repository](https://github.com/interbiznw-btcpcontrib/insight-api-btcp).
+For more details about the [Insight API](https://github.com/anonymousbitcoin/insight-api-anon) configuration and end-points, go to [Insight API GitHub repository](https://github.com/anonymousbitcoin/insight-api-anon).
 
 ## Contribute
 
-Contributions and suggestions are welcomed at the [Insight UI GitHub repository](https://github.com/interbiznw-btcpcontrib/insight-ui-btcp).
+Contributions and suggestions are welcomed at the [Insight UI GitHub repository](https://github.com/anonymousbitcoin/insight-ui-anon).
 
 
 ## License
