@@ -1,0 +1,128 @@
+<div data-ng-include src="'views/includes/connection.html'"></div>
+<section data-ng-controller="MasternodesController" data-ng-init="findOne()">
+  <div class="secondary_navbar hidden-xs hidden-sm" scroll data-ng-class="{'hidden': !secondaryNavbar}" data-ng-show="masternode.hash" data-ng-init="hideSNavbar=0">
+    <div class="container" data-ng-if="!hideSNavbar">
+      <div class="row">
+        <div class="col-md-1">
+          <a href="masternode/{{masternode.previousmasternodehash}}"><span class="lead glyphicon glyphicon-chevron-left"></span></a>
+        </div>
+        <div class="col-md-10">
+          <div class="row">
+            <div class="col-md-5">
+              <h3 class="text-left"><span translate>Masternode</span> #{{masternode.height}}</h3>
+            </div>
+            <p class="col-md-6 ellipsis text-left">
+                <strong>Hash</strong> {{masternode.hash}}
+            </p>
+            <div class="col-md-1 text-left">
+                <span class="btn-copy" clip-copy="masternode.hash"></span>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-1">
+          <a data-ng-show="masternode.nextmasternodehash" href="masternode/{{masternode.nextmasternodehash}}"><span class="lead glyphicon glyphicon-chevron-right"></span></a>
+        </div>
+      </div>
+    </div> <!-- END OF CONTAINER -->
+    <div class="hide_snavbar">
+      <a href="#" data-ng-click="hideSNavbar=!hideSNavbar">
+        <span data-ng-show="hideSNavbar"><span class="text-muted glyphicon glyphicon-chevron-down"></span></span>
+        <span data-ng-show="!hideSNavbar"><span class="text-muted glyphicon glyphicon-chevron-up"></span></span>
+      </a>
+    </div>
+  </div>
+  <h1>Masternode #{{masternode.height}}</h1>
+  <div class="text-muted" data-ng-if="!masternode.hash">
+    <span translate>Loading Masternode Information</span>  <span class="loader-gif"></span>
+  </div>
+  <div data-ng-if="masternode.hash">
+    <div class="well well-sm ellipsis">
+      <strong>MasternodeHash</strong> 
+      <span class="txid text-muted">{{masternode.hash}}</span>
+      <span class="btn-copy" clip-copy="masternode.hash"></span>
+    </div>
+    <h2 translate>Summary</h2>
+    <div class="row">
+      <div class="col-md-6">
+        <table class="table" style="table-layout: fixed">
+          <tbody>
+          <tr>
+            <td><strong translate>Number Of Transactions</strong></td>
+            <td class="text-right text-muted">{{masternode.tx.length}}</td>
+          </tr>
+          <tr>
+            <td><strong translate>Height</strong></td>
+            <td class="text-right text-muted">{{masternode.height}}
+              <span data-ng-show="masternode.isMainChain" class="text-success">(Mainchain)</span>
+              <span data-ng-show="!masternode.isMainChain" class="text-danger"> <span class="glyphicon glyphicon-warning-sign"></span> (Orphaned)</span>
+            </td>
+          </tr>
+          <tr>
+            <td><strong translate>Masternode Reward</strong></td>
+            <td class="text-right text-muted">{{$root.currency.getConvertion(masternode.reward) || masternode.reward + ' ANON'}}</td>
+          </tr> 
+          <tr>
+            <td><strong translate>Timestamp</strong></td>
+            <td class="text-right text-muted">{{masternode.time * 1000 | date:'medium'}}</td>
+          </tr>
+          <tr data-ng-show="masternode.poolInfo">
+            <td><strong translate>Mined by</strong></td>
+            <td class="text-right text-muted">
+              <a href="{{masternode.poolInfo.url}}" target="_blank" title="{{masternode.poolInfo.poolName}}">{{masternode.poolInfo.poolName}}</a>
+            </td>
+          </tr>
+          <tr>
+            <td><strong>Merkle Root</strong></td>
+            <td class="text-right text-muted">
+              <div class="ellipsis">
+                <span class="btn-copy" clip-copy="masternode.merkleroot"></span>
+                <span>{{masternode.merkleroot}}</span>
+              </div>
+            </td>
+          </tr>
+          <tr data-ng-show="masternode.previousmasternodehash">
+            <td><strong translate>Previous Masternode</strong></td>
+            <td class="text-right"><a href="masternode/{{masternode.previousmasternodehash}}">{{masternode.height-1}}</a></td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="col-md-6">
+        <table class="table">
+          <tbody>
+          <tr>
+            <td> <strong translate>Difficulty</strong></td>
+            <td class="text-right text-muted">{{masternode.difficulty}}</td>
+          </tr>
+          <tr>
+            <td> <strong>Bits</strong></td>
+            <td class="text-right text-muted">{{masternode.bits}}</td>
+          </tr>
+          <tr>
+            <td> <strong translate>Size (bytes)</strong></td>
+            <td class="text-right text-muted">{{masternode.size}}</td>
+          </tr>
+          <tr>
+            <td> <strong translate>Version</strong></td>
+            <td class="text-right text-muted">{{masternode.version}}</td>
+          </tr>
+          <tr>
+            <td> <strong>Nonce</strong></td>
+            <td class="text-right text-muted">{{masternode.nonce}}</td>
+          </tr>
+          <tr data-ng-show="masternode.nextmasternodehash">
+            <td><strong translate>Next Masternode</strong></td>
+            <td class="text-right"><a href="masternode/{{masternode.nextmasternodehash}}">{{masternode.height+1}}</a></td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div data-ng-if="masternode.hash" data-ng-controller="transactionsController" data-ng-init="load('masternode')">
+    <h3 translate>Transactions</h3>
+    <div data-ng-include src="'views/transaction/list.html'" when-scrolled="loadMore()"></div>
+  </div>
+
+</section>
+

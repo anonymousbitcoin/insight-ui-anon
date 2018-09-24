@@ -20,6 +20,8 @@ angular.module('insight',[
   'insight.address',
   'insight.search',
   'insight.status',
+  'insight.masternodes',
+  'insight.govobjects',
   'insight.connection',
   'insight.currency',
   'insight.messages'
@@ -32,6 +34,8 @@ angular.module('insight.transactions', []);
 angular.module('insight.address', []);
 angular.module('insight.search', []);
 angular.module('insight.status', []);
+angular.module('insight.masternodes', []);
+angular.module('insight.govobjects', []);
 angular.module('insight.connection', []);
 angular.module('insight.currency', []);
 angular.module('insight.messages', []);

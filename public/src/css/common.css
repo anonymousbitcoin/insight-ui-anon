@@ -714,6 +714,10 @@ a.v_highlight_more {
   margin-top: 15px;
 }
 
+.small-font {
+  font-size: 12px;
+}
+
 @media (max-width: 991px) {
   .status {
     display: none;
