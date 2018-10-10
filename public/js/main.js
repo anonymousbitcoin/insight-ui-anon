@@ -429,7 +429,7 @@ angular.module('insight.system').controller('HeaderController',
       'title': 'Masternodes',
       'link': 'masternodes'
     }, {
-      'title': 'Governance Objects',
+      'title': 'Proposals',
       'link': 'govobjects'
     }];
 
@@ -1448,7 +1448,7 @@ angular.module('insight').config(function($routeProvider) {
     }).
     when('/govobjects', {
       templateUrl: 'views/govobject_list.html',
-      title: 'ANON Governance Objects'
+      title: 'ANON Proposals'
     }).
     when('/address/:addrStr', {
       templateUrl: 'views/address.html',

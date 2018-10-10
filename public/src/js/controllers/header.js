@@ -20,7 +20,7 @@ angular.module('insight.system').controller('HeaderController',
       'title': 'Masternodes',
       'link': 'masternodes'
     }, {
-      'title': 'Governance Objects',
+      'title': 'Proposals',
       'link': 'govobjects'
     }];
 
