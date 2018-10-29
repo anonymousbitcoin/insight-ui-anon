@@ -11,11 +11,11 @@ Please see the guide at [https://bitcore.io/guides/full-node](https://bitcore.io
 To manually install all of the necessary components, you can run these commands:
 
 ```bash
-npm install anonymousbitcoin/bitcore-node-anon
+npm install bitcore-node-anon
 ./node_modules/bitcore-node-anon/bin/bitcore-node create anon-explorer
 cd anon-explorer
-../node_modules/bitcore-node-anon/bin/bitcore-node install anonymousbitcoin/insight-api-anon anonymousbitcoin/insight-ui-anon
-nvm use v4; ./node_modules/bitcore-node-anonymousbitcoin/bin/bitcore-node start
+../node_modules/bitcore-node-anon/bin/bitcore-node install insight-api-anon insight-ui-anon
+nvm use v4; ./node_modules/bitcore-node-anon/bin/bitcore-node start
 ```
 Get the memo script from https://gist.github.com/aayanl/e2a757eaa9866e83c454d115cc214a89 and have it save the memos to public/js/memos.txt
 
