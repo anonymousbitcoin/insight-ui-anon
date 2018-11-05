@@ -28,6 +28,16 @@ angular.module('insight.masternodes').controller('MasternodesController',
     });
   };
 
+  $scope.listByRank = function() {
+    $scope.loading = true;
+
+    MasternodesByRank.get(function(res) {
+      $scope.loading = false;
+      $scope.masternodesByRank = res.masternodesByRank;
+      $scope.pagination = res.pagination;
+    });
+  };
+
 
   $scope.params = $routeParams;
 

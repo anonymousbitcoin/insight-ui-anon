@@ -18,6 +18,10 @@
               <th class="text-center" translate><p>Payment Amount</p></th>
               <th class="text-center" translate><p>Type</p></th>
               <th class="text-center" translate><p>Url</p></th>
+              <th class="text-center" translate><p>AbsoluteYesCount</p></th>
+              <th class="text-center" translate><p>YesCount</p></th>
+              <th class="text-center" translate><p>NoCount</p></th>
+              <th class="text-center" translate><p>AbstainCount</p></th>
             </tr>
           </thead>
           <tbody>
@@ -32,6 +36,10 @@
             <td class="text-center">{{d.payment_amount}}</td>
             <td class="text-center">{{d.type}}</td>
             <td class="text-center"><a href="{{d.url}}">Proposal Description</a></td>
+            <td class="text-center">{{d.AbsoluteYesCount}}</td>
+            <td class="text-center">{{d.YesCount}}</td>
+            <td class="text-center">{{d.NoCount}}</td>
+            <td class="text-center">{{d.AbstainCount}}</td>
           </tr>
           </tbody>
         </table>

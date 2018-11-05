@@ -1,50 +1,58 @@
-<div data-ng-include src="'views/includes/connection.html'"></div>
-<section data-ng-controller="MasternodesController" data-ng-init="list()">
-  <div class="row">
-    <div>
-      <div class="page-header">
-        <h1>
-          <span translate>Masternodes</span>
-        </h1>
-      </div>
-      <div class="table-responsive" style="overflow-x: auto">
-        <table class="table table-hover table-striped text-center">
-          <thead>
-            <tr>
-              <th class="text-center" translate><p>Vin</p></th>
-              <th class="text-center" translate><p>Status</p></th>
-              <th class="text-center" translate><p>Rank</p></th>
-              <th class="text-center" translate><p>IP</p></th>
-              <th class="text-center" translate><p>Protocol</p></th>
-              <th class="text-center" translate><p>Payee</p></th>
-              <th class="text-center" translate><p>Active </p>Seconds</th>
-              <th class="text-center" translate><p>Last </p>Seen</th>
-            </tr>
-          </thead>
-          <tbody>
-          <tr data-ng-show="loading">
-            <td colspan="5"><span translate>Waiting for masternodes...</span> <span class="loader-gif"></span></td>
-          </tr>
-          <tr class="fader" data-ng-repeat='masternode in masternodes'>
-            <td class="text-center">{{masternode.vin}}</td>
-            <td class="text-center">{{masternode.status}}</td>
-            <td class="text-center">{{masternode.rank}}</td>
-            <td class="text-center">{{masternode.ip}}</td>
-            <td class="text-center">{{masternode.protocol}}</td>
-            <td class="text-center"><a href="address/{{masternode.payee}}">{{masternode.payee}}</a></td>
-            <td class="text-center">{{masternode.activeseconds}}</td>
-            <td class="text-center">{{masternode.lastseen}}</td>
-          </tr>
-          </tbody>
-        </table>
-      </div>
-      <div data-ng-if="pagination.more">
-        <a class="btn btn-primary" href="masternodes-date/{{pagination.current}}" data-ng-show="{{before}}">Lastest masternode from date</a>
-        <a class="btn btn-primary" href="masternodes-date/{{pagination.current}}/{{pagination.moreTs}}">Older masternodes from this date</a>
+<div class="container">
+  <ul class="nav nav-tabs">
+    <li><a data-toggle="tab" href="/masternodes">Full Masternode List</a></li>
+    <li><a data-toggle="tab" href="/masternodesbyrank">Masternode Rank</a></li>
+  </ul>
+
+  <div class="tab-content">
+    <div id="menu1" class="tab-pane active">
+      <div data-ng-include src="'views/includes/connection.html'"></div>
+        <section data-ng-controller="MasternodesController" data-ng-init="list()">
+          <div class="row">
+            <div>
+              <div class="page-header">
+                <h1>
+                  <span translate>Masternodes</span>
+                </h1>
+              </div>
+              <div class="table-responsive" style="overflow-x: auto">
+                <table class="table table-hover table-striped text-center">
+                  <thead>
+                    <tr>
+                      <th class="text-center" translate><p>Vin</p></th>
+                      <th class="text-center" translate><p>Status</p></th>
+                      <th class="text-center" translate><p>Protocol</p></th>
+                      <th class="text-center" translate><p>Payee</p></th>
+                      <th class="text-center" translate><p>Active </p>Seconds</th>
+                      <th class="text-center" translate><p>Last </p>Seen</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  <tr data-ng-show="loading">
+                    <td colspan="5"><span translate>Waiting for masternodes...</span> <span class="loader-gif"></span></td>
+                  </tr>
+                  <tr class="fader" data-ng-repeat='masternode in masternodes'>
+                    <td class="text-center">{{masternode.vin}}</td>
+                    <td class="text-center">{{masternode.status}}</td>
+                    <td class="text-center">{{masternode.protocol}}</td>
+                    <td class="text-center"><a href="address/{{masternode.payee}}">{{masternode.payee}}</a></td>
+                    <td class="text-center">{{masternode.activeseconds}}</td>
+                    <td class="text-center">{{masternode.lastseen}}</td>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div data-ng-if="pagination.more">
+                <a class="btn btn-primary" href="masternodes-date/{{pagination.current}}" data-ng-show="{{before}}">Lastest masternode from date</a>
+                <a class="btn btn-primary" href="masternodes-date/{{pagination.current}}/{{pagination.moreTs}}">Older masternodes from this date</a>
+              </div>
+            </div>
+          </div>
+          <h2 class="text-center text-muted" data-ng-show="!masternodes.length && !loading"
+            translate>No masternodes yet.</h2>
+        </section>
       </div>
     </div>
   </div>
-  <h2 class="text-center text-muted" data-ng-show="!masternodes.length && !loading"
-    translate>No masternodes yet.</h2>
-</section>
+</div>
 

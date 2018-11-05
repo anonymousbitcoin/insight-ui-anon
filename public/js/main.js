@@ -199,7 +199,7 @@ angular.module('insight.blocks').controller('BlocksController',
 
 });
 angular.module('insight.masternodes').controller('MasternodesController',
-  function($scope, $rootScope, $routeParams, $location, Global, Masternode, Masternodes) {
+  function($scope, $rootScope, $routeParams, $location, Global, Masternode, Masternodes, MasternodesByRank) {
   $scope.global = Global;
   $scope.loading = false;
 
@@ -212,6 +212,16 @@ angular.module('insight.masternodes').controller('MasternodesController',
     Masternodes.get(function(res) {
       $scope.loading = false;
       $scope.masternodes = res.masternodes;
+      $scope.pagination = res.pagination;
+    });
+  };
+
+  $scope.listByRank = function() {
+    $scope.loading = true;
+
+    MasternodesByRank.get(function(res) {
+      $scope.loading = false;
+      $scope.masternodesByRank = res.masternodesByRank;
       $scope.pagination = res.pagination;
     });
   };
@@ -236,6 +246,10 @@ angular.module('insight.govobjects').controller('GovObjectsController',
       for (let gobject in res.gobjects) {
         if (res.gobjects.hasOwnProperty(gobject)) {
           let element = res.gobjects[gobject];
+          element.DataObject.AbsoluteYesCount = element.AbsoluteYesCount;
+          element.DataObject.YesCount = element.YesCount;
+          element.DataObject.NoCount = element.NoCount;
+          element.DataObject.AbstainCount = element.AbstainCount;
           gobjectData.push(element.DataObject);
         }
       }
@@ -1104,7 +1118,7 @@ angular.module('insight.blocks')
 angular.module('insight.masternodes')
 .factory('Masternode',
   function($resource) {
-  return $resource(window.apiPrefix + '/masternodes/list', {}, {
+  return $resource(window.apiPrefix + '/masternodes', {}, {
       method: 'GET',
       interceptor: {
         response: function (res) {
@@ -1122,9 +1136,9 @@ angular.module('insight.masternodes')
   function($resource) {
     return $resource(window.apiPrefix + '/masternodes/list');
 })
-.factory('MasternodeByHeight',
+.factory('MasternodesByRank',
   function($resource) {
-    return $resource(window.apiPrefix + '/masternode-index/:masternodeHeight');
+    return $resource(window.apiPrefix + '/masternodes/listbyrank');
 });
 
 // Source: public/src/js/services/govobjects.js
@@ -1444,6 +1458,10 @@ angular.module('insight').config(function($routeProvider) {
     }).
     when('/masternodes', {
       templateUrl: 'views/masternode_list.html',
+      title: 'ANON Masternodes'
+    }).
+    when('/masternodesbyrank', {
+      templateUrl: 'views/masternode_by_rank_list.html',
       title: 'ANON Masternodes'
     }).
     when('/govobjects', {

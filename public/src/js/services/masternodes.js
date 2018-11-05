@@ -3,7 +3,7 @@
 angular.module('insight.masternodes')
   .factory('Masternode',
     function($resource) {
-    return $resource(window.apiPrefix + '/masternodes/list',{
+    return $resource(window.apiPrefix + '/masternodes/listbyrank',{
       get: {
         method: 'GET',
         interceptor: {
@@ -21,9 +21,9 @@ angular.module('insight.masternodes')
   })
   .factory('Masternodes',
     function($resource) {
-      return $resource(window.apiPrefix + '/masternodes/list');
+      return $resource(window.apiPrefix + '/masternodes/listbyrank');
   })
-  .factory('BlockByHeight',
+  .factory('MasternodesByRank',
     function($resource) {
-      return $resource(window.apiPrefix + '/masternodes/list');
+      return $resource(window.apiPrefix + '/masternodes/listbyrank');
   });
