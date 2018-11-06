@@ -250,6 +250,8 @@ angular.module('insight.govobjects').controller('GovObjectsController',
           element.DataObject.YesCount = element.YesCount;
           element.DataObject.NoCount = element.NoCount;
           element.DataObject.AbstainCount = element.AbstainCount;
+          element.DataObject.startDate = new Date(element.DataObject.start_epoch * 1000).toGMTString();
+          element.DataObject.endDate = new Date(element.DataObject.end_epoch * 1000).toGMTString();
           gobjectData.push(element.DataObject);
         }
       }

@@ -11,30 +11,26 @@
         <table class="table table-hover table-striped text-center">
           <thead>
             <tr>
-              <th class="text-center" translate><p>Start Epoch</p></th>
-              <th class="text-center" translate><p>End Epoch</p></th>
+              <th class="text-center" translate><p>Start Date</p></th>
+              <th class="text-center" translate><p>End Date</p></th>
               <th class="text-center" translate><p>Name</p></th>
               <th class="text-center" translate><p>Payment Address</p></th>
-              <th class="text-center" translate><p>Payment Amount</p></th>
-              <th class="text-center" translate><p>Type</p></th>
               <th class="text-center" translate><p>Url</p></th>
-              <th class="text-center" translate><p>AbsoluteYesCount</p></th>
-              <th class="text-center" translate><p>YesCount</p></th>
-              <th class="text-center" translate><p>NoCount</p></th>
-              <th class="text-center" translate><p>AbstainCount</p></th>
+              <th class="text-center" translate><p>Absolute Yes Count</p></th>
+              <th class="text-center" translate><p>Yes Count</p></th>
+              <th class="text-center" translate><p>No Count</p></th>
+              <th class="text-center" translate><p>Abstain Count</p></th>
             </tr>
           </thead>
           <tbody>
           <tr data-ng-show="loading">
             <td colspan="7"><span translate>Waiting for governance objects...</span> <span class="loader-gif"></span></td>
           </tr>
-          <tr class="fader" data-ng-repeat='d in gobjectData'>
-            <td class="text-center">{{d.start_epoch}}</td>
-            <td class="text-center">{{d.end_epoch}}</td>
+          <tr class="fader" data-ng-repeat="d in gobjectData | orderBy: 'start_epoch':false ">
+            <td class="text-center">{{d.startDate}}</td>
+            <td class="text-center">{{d.endDate}}</td>
             <td class="text-center">{{d.name}}</td>
             <td class="text-center"><a href="address/{{d.payment_address}}">{{d.payment_address}}</a></td>
-            <td class="text-center">{{d.payment_amount}}</td>
-            <td class="text-center">{{d.type}}</td>
             <td class="text-center"><a href="{{d.url}}">Proposal Description</a></td>
             <td class="text-center">{{d.AbsoluteYesCount}}</td>
             <td class="text-center">{{d.YesCount}}</td>

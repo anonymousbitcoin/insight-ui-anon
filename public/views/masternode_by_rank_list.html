@@ -18,17 +18,14 @@
                     <table class="table table-hover table-striped text-center">
                     <thead>
                         <tr>
-                        <th class="text-center" translate><p>rank</p></th>
-                        <th class="text-center" translate><p>network</p></th>
-    
-                        <th class="text-center" translate><p>txhash</p></th>
-                        <th class="text-center" translate><p>outidx</p></th>
-                        <th class="text-center" translate><p>status</p></th>
-                        <th class="text-center" translate><p>address</p></th>
-                        <th class="text-center" translate><p>version</p></th>
-                        <th class="text-center" translate><p>lastseen</p></th>
-                        <th class="text-center" translate><p>activetime</p></th>
-                        <th class="text-center" translate><p>lastpaid</p></th>
+                        <th class="text-center" translate><p>Rank</p></th>
+                        <th class="text-center" translate><p>Tx Hash</p></th>
+                        <th class="text-center" translate><p>Output Index</p></th>
+                        <th class="text-center" translate><p>Status</p></th>
+                        <th class="text-center" translate><p>Address</p></th>
+                        <th class="text-center" translate><p>Version</p></th>
+                        <th class="text-center" translate><p>Last Seen</p></th>
+                        <th class="text-center" translate><p>Active Time</p></th>
                         
                         </tr>
                     </thead>
@@ -38,7 +35,6 @@
                     </tr>
                     <tr class="fader" data-ng-repeat='masternode in masternodesByRank'>
                         <td class="text-center">{{masternode.rank}}</td>
-                        <td class="text-center">{{masternode.network}}</td>
                         <td class="text-center">{{masternode.txhash}}</td>
                         <td class="text-center">{{masternode.outidx}}</td>
                         <td class="text-center">{{masternode.status}}</td>
@@ -46,7 +42,6 @@
                         <td class="text-center">{{masternode.version}}</td>
                         <td class="text-center">{{masternode.lastseen}}</td>
                         <td class="text-center">{{masternode.activetime}}</td>
-                        <td class="text-center">{{masternode.lastpaid}}</td>
                     </tr>
                     </tbody>
                     </table>
@@ -57,7 +52,7 @@
                 </div>
                 </div>
             </div>
-            <h2 class="text-center text-muted" data-ng-show="!masternodes.length && !loading"
+            <h2 class="text-center text-muted" data-ng-show="!masternodesByRank.length && !loading"
                 translate>No masternodes yet.</h2>
             </section>
         </div>
