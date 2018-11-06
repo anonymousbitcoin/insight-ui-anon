@@ -210,8 +210,18 @@ angular.module('insight.masternodes').controller('MasternodesController',
     $rootScope.titleDetail = $scope.detail;
 
     Masternodes.get(function(res) {
+
+      let masternodes = []
+      for (let masternode in res.masternodes) {
+        if (res.masternodes.hasOwnProperty(masternode)) {
+          let element = res.masternodes[masternode];
+          element.lastseen = moment(element.lastseen * 1000).fromNow();
+          masternodes.push(element);
+        }
+      }
+
       $scope.loading = false;
-      $scope.masternodes = res.masternodes;
+      $scope.masternodes = masternodes;
       $scope.pagination = res.pagination;
     });
   };
@@ -220,8 +230,19 @@ angular.module('insight.masternodes').controller('MasternodesController',
     $scope.loading = true;
 
     MasternodesByRank.get(function(res) {
+
+      let masternodesByRank = []
+      for (let masternode in res.masternodesByRank) {
+        if (res.masternodesByRank.hasOwnProperty(masternode)) {
+          let element = res.masternodesByRank[masternode];
+          let currentDate = new Date();
+          element.lastseen = moment(element.lastseen * 1000).fromNow();         
+          masternodesByRank.push(element);
+        }
+      }
+
       $scope.loading = false;
-      $scope.masternodesByRank = res.masternodesByRank;
+      $scope.masternodesByRank = masternodesByRank;
       $scope.pagination = res.pagination;
     });
   };

@@ -59,7 +59,9 @@
     "front-end"
   ],
   "bitcoreNode": "bitcore-node-anon",
-  "dependencies": {},
+  "dependencies": {
+    "moment": "^2.22.2"
+  },
   "devDependencies": {
     "bower": "~1.2.8",
     "grunt": "~0.4.2",

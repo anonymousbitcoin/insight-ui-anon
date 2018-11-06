@@ -23,15 +23,15 @@
                       <th class="text-center" translate><p>Status</p></th>
                       <th class="text-center" translate><p>Protocol</p></th>
                       <th class="text-center" translate><p>Payee</p></th>
-                      <th class="text-center" translate><p>Active </p>Seconds</th>
-                      <th class="text-center" translate><p>Last </p>Seen</th>
+                      <th class="text-center" translate><p>Active </p>Time</th>
+                      <th class="text-center" translate><p>Last Seen</p></th>
                     </tr>
                   </thead>
                   <tbody>
                   <tr data-ng-show="loading">
                     <td colspan="5"><span translate>Waiting for masternodes...</span> <span class="loader-gif"></span></td>
                   </tr>
-                  <tr class="fader" data-ng-repeat='masternode in masternodes'>
+                  <tr class="fader" data-ng-repeat="masternode in masternodes">
                     <td class="text-center">{{masternode.vin}}</td>
                     <td class="text-center">{{masternode.status}}</td>
                     <td class="text-center">{{masternode.protocol}}</td>

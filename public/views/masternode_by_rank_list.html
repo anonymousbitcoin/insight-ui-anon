@@ -20,7 +20,6 @@
                         <tr>
                         <th class="text-center" translate><p>Rank</p></th>
                         <th class="text-center" translate><p>Tx Hash</p></th>
-                        <th class="text-center" translate><p>Output Index</p></th>
                         <th class="text-center" translate><p>Status</p></th>
                         <th class="text-center" translate><p>Address</p></th>
                         <th class="text-center" translate><p>Version</p></th>
@@ -36,7 +35,6 @@
                     <tr class="fader" data-ng-repeat='masternode in masternodesByRank'>
                         <td class="text-center">{{masternode.rank}}</td>
                         <td class="text-center">{{masternode.txhash}}</td>
-                        <td class="text-center">{{masternode.outidx}}</td>
                         <td class="text-center">{{masternode.status}}</td>
                         <td class="text-center"><a href="address/{{masternode.addr}}">{{masternode.addr}}</a></td>
                         <td class="text-center">{{masternode.version}}</td>
