@@ -1471,6 +1471,10 @@ angular.module('insight').config(function($routeProvider) {
       templateUrl: 'views/index.html',
       title: 'Home'
     }).
+    when('/insight', {
+      templateUrl: 'views/index.html',
+      title: 'Home'
+    }).
     when('/blocks', {
       templateUrl: 'views/block_list.html',
       title: 'ANON Blocks solved Today'
