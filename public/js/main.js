@@ -216,6 +216,7 @@ angular.module('insight.masternodes').controller('MasternodesController',
         if (res.masternodes.hasOwnProperty(masternode)) {
           let element = res.masternodes[masternode];
           element.lastseen = moment(element.lastseen * 1000).fromNow();
+          element.activeseconds = moment.duration(element.activeseconds * 1000).humanize();
           masternodes.push(element);
         }
       }
@@ -236,7 +237,8 @@ angular.module('insight.masternodes').controller('MasternodesController',
         if (res.masternodesByRank.hasOwnProperty(masternode)) {
           let element = res.masternodesByRank[masternode];
           let currentDate = new Date();
-          element.lastseen = moment(element.lastseen * 1000).fromNow();         
+          element.lastseen = moment(element.lastseen * 1000).fromNow();   
+          element.activetime = moment.duration(element.activetime * 1000).humanize();
           masternodesByRank.push(element);
         }
       }
