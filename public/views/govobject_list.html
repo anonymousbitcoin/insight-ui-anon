@@ -11,10 +11,11 @@
         <table class="table table-hover table-striped text-center">
           <thead>
             <tr>
+              <th class="text-center" translate><p>Name</p></th>
               <th class="text-center" translate><p>Start Date</p></th>
               <th class="text-center" translate><p>End Date</p></th>
-              <th class="text-center" translate><p>Name</p></th>
               <th class="text-center" translate><p>Payment Address</p></th>
+              <th class="text-center" translate><p>Payment Cycles</p></th>
               <th class="text-center" translate><p>Url</p></th>
               <th class="text-center" translate><p>Absolute Yes Count</p></th>
               <th class="text-center" translate><p>Yes Count</p></th>
@@ -27,10 +28,11 @@
             <td colspan="7"><span translate>Waiting for governance objects...</span> <span class="loader-gif"></span></td>
           </tr>
           <tr class="fader" data-ng-repeat="d in gobjectData | orderBy: 'start_epoch':false ">
+            <td class="text-center">{{d.name}}</td>
             <td class="text-center">{{d.startDate}}</td>
             <td class="text-center">{{d.endDate}}</td>
-            <td class="text-center">{{d.name}}</td>
             <td class="text-center"><a href="address/{{d.payment_address}}">{{d.payment_address}}</a></td>
+            <td class="text-center">{{d.paymentCycles}}</td>
             <td class="text-center"><a href="{{d.url}}">Proposal Description</a></td>
             <td class="text-center">{{d.AbsoluteYesCount}}</td>
             <td class="text-center">{{d.YesCount}}</td>
