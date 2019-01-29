@@ -15,6 +15,7 @@
               <th class="text-center" translate><p>Start Date</p></th>
               <th class="text-center" translate><p>End Date</p></th>
               <th class="text-center" translate><p>Payment Address</p></th>
+              <th class="text-center" translate><p>Payment Amount</p></th>
               <th class="text-center" translate><p>Payment Cycles</p></th>
               <th class="text-center" translate><p>Url</p></th>
               <th class="text-center" translate><p>Absolute Yes Count</p></th>
@@ -32,6 +33,7 @@
             <td class="text-center">{{d.startDate}}</td>
             <td class="text-center">{{d.endDate}}</td>
             <td class="text-center"><a href="address/{{d.payment_address}}">{{d.payment_address}}</a></td>
+            <td class="text-center">{{d.payment_amount}}</td>
             <td class="text-center">{{d.paymentCycles}}</td>
             <td class="text-center"><a href="{{d.url}}">Proposal Description</a></td>
             <td class="text-center">{{d.AbsoluteYesCount}}</td>
