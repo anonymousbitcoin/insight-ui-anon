@@ -819,7 +819,7 @@ angular.module('insight.search').controller('SearchController',
 
 // Source: public/src/js/controllers/status.js
 angular.module('insight.status').controller('StatusController',
-  function($scope, $routeParams, $location, Global, Status, Sync, getSocket) {
+  function($scope, $routeParams, $location, Global, Status, Sync, getSocket, CircSupply) {
     $scope.global = Global;
 
     $scope.getStatus = function(q) {
@@ -833,7 +833,12 @@ angular.module('insight.status').controller('StatusController',
         function(e) {
           $scope.error = 'API ERROR: ' + e.data;
         });
-    };
+      };
+    
+      CircSupply.get((d) => {
+        console.log("Here is the data", d)
+        $scope.currentSupply = d;
+      })
 
     $scope.humanSince = function(time) {
       var m = moment.unix(time / 1000);
@@ -1287,7 +1292,7 @@ angular.module('insight.socket').factory('getSocket',
 // Source: public/src/js/services/status.js
 angular.module('insight.status')
   .factory('Status',
-    function($resource) {
+    function($resource, $http) {
       return $resource(window.apiPrefix + '/status', {
         q: '@q'
       });
@@ -1299,6 +1304,19 @@ angular.module('insight.status')
   .factory('PeerSync',
     function($resource) {
       return $resource(window.apiPrefix + '/peer');
+    })
+  .factory('CircSupply',
+    function($resource, $http) {
+      var root = {};
+      root.get = (cb) => {
+        $http.get('https://bypasscors.herokuapp.com/api/?url=https://supply.anonfork.io')
+        .success(function(data, status, headers, config) {
+          return cb(data);
+          // $scope.txid = data.txid ;
+        })
+      }
+
+      return root;
     });
 
 // Source: public/src/js/services/transactions.js
