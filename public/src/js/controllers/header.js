@@ -16,6 +16,12 @@ angular.module('insight.system').controller('HeaderController',
     }, {
       'title': 'Status',
       'link': 'status'
+    }, {
+      'title': 'Masternodes',
+      'link': 'masternodes'
+    }, {
+      'title': 'Proposals',
+      'link': 'govobjects'
     }];
 
     $scope.openScannerModal = function() {

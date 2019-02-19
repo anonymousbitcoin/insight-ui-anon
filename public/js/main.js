@@ -15,6 +15,8 @@ angular.module('insight',[
   'insight.system',
   'insight.socket',
   'insight.blocks',
+  'insight.masternodes',
+  'insight.govobjects',
   'insight.transactions',
   'insight.address',
   'insight.search',
@@ -27,6 +29,8 @@ angular.module('insight',[
 angular.module('insight.system', []);
 angular.module('insight.socket', []);
 angular.module('insight.blocks', []);
+angular.module('insight.masternodes', []);
+angular.module('insight.govobjects', []);
 angular.module('insight.transactions', []);
 angular.module('insight.address', []);
 angular.module('insight.search', []);
@@ -188,6 +192,58 @@ angular.module('insight.blocks').controller('BlocksController',
         $rootScope.flashMessage = 'Block Not Found';
       }
       $location.path('/');
+    });
+  };
+
+  $scope.params = $routeParams;
+
+});
+angular.module('insight.masternodes').controller('MasternodesController',
+  function($scope, $rootScope, $routeParams, $location, Global, Masternode, Masternodes) {
+  $scope.global = Global;
+  $scope.loading = false;
+
+
+  $scope.list = function() {
+    $scope.loading = true;
+
+    $rootScope.titleDetail = $scope.detail;
+
+    Masternodes.get(function(res) {
+      $scope.loading = false;
+      $scope.masternodes = res.masternodes;
+      $scope.pagination = res.pagination;
+    });
+  };
+
+  $scope.params = $routeParams;
+
+});
+
+angular.module('insight.govobjects').controller('GovObjectsController',
+  function($scope, $rootScope, $routeParams, $location, Global, GovObject, GovObjects) {
+  $scope.global = Global;
+  $scope.loading = false;
+
+
+  $scope.list = function() {
+    $scope.loading = true;
+
+    $rootScope.titleDetail = $scope.detail;
+
+    GovObjects.get(function(res) {
+      let gobjectData = []
+      for (let gobject in res.gobjects) {
+        if (res.gobjects.hasOwnProperty(gobject)) {
+          let element = res.gobjects[gobject];
+          gobjectData.push(element.DataObject);
+        }
+      }
+
+      $scope.loading = false;
+      $scope.gobjects = res.gobjects;
+      $scope.gobjectData = gobjectData;
+      $scope.pagination = res.pagination;
     });
   };
 
@@ -369,6 +425,12 @@ angular.module('insight.system').controller('HeaderController',
     }, {
       'title': 'Status',
       'link': 'status'
+    }, {
+      'title': 'Masternodes',
+      'link': 'masternodes'
+    }, {
+      'title': 'Proposals',
+      'link': 'govobjects'
     }];
 
     $scope.openScannerModal = function() {
@@ -1037,6 +1099,59 @@ angular.module('insight.blocks')
       return $resource(window.apiPrefix + '/block-index/:blockHeight');
   });
 
+
+// Source: public/src/js/services/masternodes.js
+angular.module('insight.masternodes')
+.factory('Masternode',
+  function($resource) {
+  return $resource(window.apiPrefix + '/masternodes/list', {}, {
+      method: 'GET',
+      interceptor: {
+        response: function (res) {
+          return res.masternodes;
+        },
+        responseError: function (res) {
+          if (res.status === 404) {
+            return res;
+          }
+        }
+      }
+  });
+})
+.factory('Masternodes',
+  function($resource) {
+    return $resource(window.apiPrefix + '/masternodes/list');
+})
+.factory('MasternodeByHeight',
+  function($resource) {
+    return $resource(window.apiPrefix + '/masternode-index/:masternodeHeight');
+});
+
+// Source: public/src/js/services/govobjects.js
+angular.module('insight.govobjects')
+.factory('GovObject',
+  function($resource) {
+  return $resource(window.apiPrefix + '/gobject/list', {}, {
+      method: 'GET',
+      interceptor: {
+        response: function (res) {
+          return res.govobjects;
+        },
+        responseError: function (res) {
+          if (res.status === 404) {
+            return res;
+          }
+        }
+      }
+  });
+})
+.factory('GovObjects',
+  function($resource) {
+    // let possibleJson = $resource(window.apiPrefix + '/gobject/list');
+    // console.log("possibleJson?", possibleJson);
+    return $resource(window.apiPrefix + '/gobject/list');
+})
+
 // Source: public/src/js/services/currency.js
 angular.module('insight.currency').factory('Currency',
   function($resource) {
@@ -1303,6 +1418,10 @@ angular.module('insight').config(function($routeProvider) {
       controller: 'BlocksController',
       templateUrl: 'views/redirect.html'
     }).
+    when('/block-index/:blockHeight', {
+      controller: 'MasternodesController',
+      templateUrl: 'views/redirect.html'
+    }).
     when('/tx/send', {
       templateUrl: 'views/transaction_sendraw.html',
       title: 'Broadcast Raw Transaction'
@@ -1322,6 +1441,14 @@ angular.module('insight').config(function($routeProvider) {
     when('/blocks-date/:blockDate/:startTimestamp?', {
       templateUrl: 'views/block_list.html',
       title: 'ANON Blocks solved '
+    }).
+    when('/masternodes', {
+      templateUrl: 'views/masternode_list.html',
+      title: 'ANON Masternodes'
+    }).
+    when('/govobjects', {
+      templateUrl: 'views/govobject_list.html',
+      title: 'ANON Proposals'
     }).
     when('/address/:addrStr', {
       templateUrl: 'views/address.html',

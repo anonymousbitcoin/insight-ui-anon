@@ -11,6 +11,20 @@ angular.module('insight').config(function($routeProvider) {
       controller: 'BlocksController',
       templateUrl: 'views/redirect.html'
     }).
+    when('/masternodes', {
+      controller: 'MasternodesController',
+      templateUrl: 'views/masternode_list.html',
+      title: 'ANON Blocks solved Today'
+    }).
+    when('/govobjects', {
+      controller: 'GovObjectsController',
+      templateUrl: 'views/govobject_list.html',
+      title: 'ANON Blocks solved Today'
+    }).
+    when('/block-index/:blockHeight', {
+      controller: 'MasternodesController',
+      templateUrl: 'views/redirect.html'
+    }).
     when('/tx/send', {
       templateUrl: 'views/transaction_sendraw.html',
       title: 'Broadcast Raw Transaction'
